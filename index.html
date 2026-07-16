@@ -320,7 +320,7 @@
   <section class="illustration-section">
     <div class="container">
       <h2 class="section-title reveal">기업의 안정과 개인의 권리가 상생할 수 있도록<br>깊이 있는 솔루션을 약속합니다.</h2>
-      <div class="illustration-break reveal"><img src="images/hero.png" alt="온유 인사노무컨설팅 상담 현장"></div>
+      <div class="illustration-break"><img src="images/illustration.jpeg" alt="온유 인사노무컨설팅 상담 현장"></div>
     </div>
   </section>
 
@@ -333,11 +333,11 @@
       <div class="stats-v2-grid">
         <div class="stat-card-v2 reveal">
           <span class="label">2025년 신규 자문 기업 수</span>
-          <span class="number">25+</span>
+          <span class="number count-up" data-count-to="25" data-count-suffix="+">0+</span>
         </div>
         <div class="stat-card-v2 reveal">
           <span class="label">처리 노동사건 건수</span>
-          <span class="number">10+</span>
+          <span class="number count-up" data-count-to="10" data-count-suffix="+">0+</span>
         </div>
         <div class="stat-card-v2 reveal">
           <span class="label">협회·연합회 자문 이력</span>
@@ -358,22 +358,32 @@
       <h2 class="section-title reveal">온유의 노무 인사이트</h2>
 
       <div class="blog-grid">
-        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background:#eff7f2;"><img src="images/icon3d-memo.png" alt=""></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
-        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background:#eef2fb;"><img src="images/icon3d-lightbulb.png" alt=""></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
-        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background:#f3eefb;"><img src="images/icon3d-chart.png" alt=""></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
-        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background:#fdf4dc;"><img src="images/icon3d-handshake.png" alt=""></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
+        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background-image:url('images/Image_fx (35).png');"></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
+        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background-image:url('images/Image_fx (39).png');"></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
+        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background-image:url('images/Image_fx (66).png');"></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
+        <a href="#" class="blog-card reveal"><div class="blog-thumb" style="background-image:url('images/Image_fx (71).png');"></div><div class="blog-card-body"><p>블로그 글 제목이 들어갈 자리</p></div></a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section>
-    <div class="cta-section reveal" style="background-image:url('images/cta-bg.png');">
+    <div class="cta-section reveal">
       <span class="eyebrow" style="color:#fff;">지금 시작하기</span>
       <h2 class="section-title">인사노무, 더 늦기 전에<br>온유와 함께 점검하세요</h2>
-      <p class="section-lead">첫 상담은 24시간 내 회신드립니다.</p>
+      <p class="section-lead">연락처를 남겨주시면 24시간 내 회신드립니다.</p>
+
+      <form id="cta-form" class="cta-form">
+        <input type="hidden" name="access_key" value="b86ebdc4-885a-4263-a88d-b71040d79957">
+        <input type="hidden" name="subject" value="[온유 홈페이지] 상담 신청이 들어왔어요">
+        <input type="hidden" name="from_name" value="온유 홈페이지">
+        <input type="text" name="name" placeholder="성함" required>
+        <input type="tel" name="phone" placeholder="연락처 (010-0000-0000)" required pattern="[0-9\-]{9,13}">
+        <button type="submit" class="btn btn-primary">상담 신청하기</button>
+      </form>
+      <p id="cta-form-msg" class="cta-form-msg" role="status" aria-live="polite"></p>
+
       <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">기업 상담 신청하기</a>
         <a href="tel:010-9002-8487" class="btn btn-secondary">전화로 바로 문의</a>
       </div>
     </div>
@@ -407,5 +417,8 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script src="js/read-reveal.js?v=18"></script>
 <script src="js/hero-expand.js?v=18"></script>
+<script src="js/illustration-shrink.js"></script>
+<script src="js/cta-form.js"></script>
+<script src="js/count-up.js"></script>
 </body>
 </html>

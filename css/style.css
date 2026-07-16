@@ -435,21 +435,18 @@ h1, h2, h3 {
 
 .blog-thumb {
   aspect-ratio: 4 / 3;
-  background: var(--color-bg-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: var(--color-bg-soft);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.35s ease;
 }
 
-.blog-thumb img {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  transition: transform 0.25s ease;
+.blog-card:hover .blog-thumb {
+  transform: scale(1.06);
 }
 
-.blog-card:hover .blog-thumb img {
-  transform: scale(1.12);
+.blog-card {
+  overflow: hidden;
 }
 
 .blog-card-body {
@@ -465,32 +462,60 @@ h1, h2, h3 {
 .cta-section {
   position: relative;
   background-color: var(--color-text);
-  background-size: cover;
-  background-position: center;
   color: #fff;
   border-radius: 32px;
   margin: 0 24px;
   padding: clamp(60px, 10vw, 120px) 24px;
   text-align: center;
-  overflow: hidden;
-}
-
-.cta-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.6);
-}
-
-.cta-section > * {
-  position: relative;
-  z-index: 1;
 }
 
 .cta-section .section-title { color: #fff; }
 .cta-section .section-lead { color: rgba(255,255,255,0.7); margin: 0 auto; }
-.cta-section .hero-actions { justify-content: center; margin-top: 36px; }
+.cta-section .hero-actions { justify-content: center; margin-top: 20px; }
 .cta-section .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+/* 상담 신청 폼 */
+.cta-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 560px;
+  margin: 36px auto 0;
+}
+
+.cta-form input[type="text"],
+.cta-form input[type="tel"] {
+  flex: 1 1 180px;
+  padding: 16px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.cta-form input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cta-form button {
+  flex: 1 1 100%;
+}
+
+.cta-form-msg {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.cta-form-msg.success { color: #8fe3b0; }
+.cta-form-msg.error { color: #ff9d9d; }
+
+@media (min-width: 560px) {
+  .cta-form button { flex: 0 0 auto; }
+}
 
 /* ---------- 푸터 ---------- */
 .site-footer {
@@ -727,12 +752,21 @@ h1, h2, h3 {
 }
 
 .icon-swatch {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+  width: 76px;
+  height: 76px;
+  padding: 12px;
+  border-radius: 20px;
   flex-shrink: 0;
   object-fit: contain;
+  /* 3D 아이콘 뒤에 카드 색과 어울리는 부드러운 타일 (붕 뜨지 않게) */
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6), 0 6px 14px rgba(0,0,0,0.06);
 }
+
+/* 카드별로 아이콘 타일 색을 배경보다 한 톤 진하게 맞춤 */
+.icon-list-item:nth-child(1) .icon-swatch { background: #dcefe4; }
+.icon-list-item:nth-child(2) .icon-swatch { background: #dde6f8; }
+.icon-list-item:nth-child(3) .icon-swatch { background: #ece2f8; }
+.icon-list-item:nth-child(4) .icon-swatch { background: #e6e8ec; }
 
 .icon-list-item h4 {
   font-size: 1.05rem;
@@ -821,6 +855,15 @@ h1, h2, h3 {
   .profile-v2 .container { grid-template-columns: 1fr; }
   .icon-list-v2 { grid-template-columns: 1fr; }
   .stats-v2-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
+@media (max-width: 520px) {
+  .stats-v2-grid { grid-template-columns: 1fr; gap: 16px; }
+  .stat-card-v2 { height: auto; min-height: 150px; padding: 24px; }
+  .stat-card-v2 span.number { font-size: 2.4rem; }
+  .stat-card-v2 span.number-text { font-size: 1.05rem; }
+  .stat-card-v2 span.number-md { font-size: 1.8rem; }
 
   /* 모바일: 영상 세로 비중 키움 */
   .hero-media { aspect-ratio: 4 / 5; margin-top: 32px; }
