@@ -57,7 +57,7 @@
 
   /* 타이포 스케일 */
   --fs-hero: clamp(2rem, 4.2vw, 3.4rem);
-  --fs-h2: clamp(1.8rem, 4vw, 3rem);
+  --fs-h2: clamp(1.6rem, 3.2vw, 2.4rem);
   --fs-h3: clamp(1.3rem, 2.4vw, 1.8rem);
   --fs-body: 1.05rem;
 
@@ -796,7 +796,7 @@ h1, h2, h3 {
 }
 
 .profile-v2-heading {
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-size: var(--fs-h2);
   margin-bottom: 24px;
 }
 
@@ -968,6 +968,7 @@ h1, h2, h3 {
   .icon-list-v2 { grid-template-columns: 1fr; }
   .stats-v2-grid { grid-template-columns: repeat(2, 1fr); }
   .illustration-break { aspect-ratio: 1 / 1; }
+  .case-card { width: 240px; min-height: 270px; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
