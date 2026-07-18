@@ -62,7 +62,7 @@
   --fs-body: 1.05rem;
 
   /* 여백 */
-  --section-padding: clamp(80px, 12vw, 160px);
+  --section-padding: clamp(40px, 12vw, 160px);
   --container-width: 1120px;
   --gutter: max(24px, calc((100vw - var(--container-width)) / 2 + 24px));
 }
@@ -99,17 +99,23 @@ h1, h2, h3 {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .hero-title {
   font-size: var(--fs-hero);
   font-weight: 600;
   letter-spacing: -0.03em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .section-title {
   font-size: var(--fs-h2);
   margin-bottom: 20px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .section-lead {
@@ -181,7 +187,55 @@ h1, h2, h3 {
 
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 29px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
 }
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 20px;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav li:last-child a { border-bottom: none; }
 
 /* ---------- 히어로 ---------- */
 .hero {
@@ -543,55 +597,25 @@ h1, h2, h3 {
 
 /* ---------- 푸터 ---------- */
 .site-footer {
-  padding: 72px 0 40px;
+  padding: 64px 0 40px;
   color: var(--color-text-soft);
   font-size: 0.9rem;
 }
 
-.footer-grid {
+.footer-top {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
-.footer-brand {
-  flex: 1 1 260px;
+.footer-links {
+  display: flex;
+  gap: 20px;
 }
 
-.footer-logo { margin-bottom: 14px; }
-
-.footer-tagline {
-  max-width: 260px;
-  color: var(--color-text-soft);
-}
-
-.footer-col {
-  flex: 0 1 160px;
-}
-
-.footer-col h3 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 16px;
-}
-
-.footer-col a,
-.footer-col span {
-  display: block;
-  color: var(--color-text-soft);
-  margin-bottom: 10px;
-}
-
-.footer-col a:hover { color: var(--color-text); }
-
-.footer-bottom {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.8rem;
-}
+.footer-info p { margin-bottom: 6px; }
 
 /* ---------- 플로팅 상담 버튼 ---------- */
 .floating-cta {
@@ -852,7 +876,7 @@ h1, h2, h3 {
 
 /* 돈주머니를 그린 계열로 톤 시프트 (차분한 톤, 형광기 없이) */
 .icon-tint-green {
-  filter: sepia(0.6) saturate(0.9) hue-rotate(65deg) brightness(0.96);
+  filter: url(#tint-money-icon);
 }
 
 .icon-list-item h4 {
@@ -934,6 +958,7 @@ h1, h2, h3 {
 /* ---------- 반응형 ---------- */
 @media (max-width: 860px) {
   .main-nav { display: none; }
+  .nav-toggle { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .profile-grid { grid-template-columns: 1fr; }
@@ -942,10 +967,12 @@ h1, h2, h3 {
   .profile-v2 .container { grid-template-columns: 1fr; }
   .icon-list-v2 { grid-template-columns: 1fr; }
   .stats-v2-grid { grid-template-columns: repeat(2, 1fr); }
+  .illustration-break { aspect-ratio: 1 / 1; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
 @media (max-width: 520px) {
+  .site-header .logo-full { display: none; }
   .stats-v2-grid { grid-template-columns: 1fr; gap: 16px; }
   .stat-card-v2 { height: auto; min-height: 150px; padding: 24px; }
   .stat-card-v2 span.number { font-size: 2.4rem; }
