@@ -726,15 +726,15 @@ h1, h2, h3 {
 }
 
 .case-card {
-  width: 286px;
+  position: relative;
+  width: 260px;
   min-height: 320px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  gap: 10px;
   padding: 32px 24px 28px;
   flex-shrink: 0;
   overflow: hidden;
@@ -748,14 +748,31 @@ h1, h2, h3 {
 /* 정적인 엇갈림만 유지 (움직임 없음) */
 .case-card:nth-child(2n) { margin-top: 36px; }
 
-.case-tag {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-text-soft);
+.case-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
+
+.case-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.case-green .case-tag { background: #def3d2; }
+.case-yellow .case-tag { background: #fae6a8; }
+.case-blue .case-tag { background: #d4e0ff; }
+
 .case-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -766,26 +783,39 @@ h1, h2, h3 {
 }
 
 .case-result {
-  margin-top: 6px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
   border-radius: 8px;
   padding: 9px 14px;
-  font-size: 0.82rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1.4;
-  max-width: 230px;
 }
 
-/* 실사 사진 (테스트) — 카드 하단에 깔끔한 라운드 이미지 */
-.case-photo-clean {
-  width: calc(100% + 48px);
-  margin: 14px -24px -28px;
-  aspect-ratio: 286 / 150;
+/* 실사 사진: 카드 하단에 깔리고, 위쪽은 카테고리 파스텔 컬러 그라데이션으로 덮이며 자연스럽게 드러남 */
+.case-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-size: cover;
-  background-position: center 25%;
+  background-position: center 30%;
 }
+
+.case-photo-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.case-green .case-photo-bg::after { background: linear-gradient(to bottom, #eff5ec 0%, #eff5ec 42%, rgba(239, 245, 236, 0) 88%); }
+.case-yellow .case-photo-bg::after { background: linear-gradient(to bottom, #fdf4dc 0%, #fdf4dc 42%, rgba(253, 244, 220, 0) 88%); }
+.case-blue .case-photo-bg::after { background: linear-gradient(to bottom, #eef2fb 0%, #eef2fb 42%, rgba(238, 242, 251, 0) 88%); }
 
 /* ---------- 대표 소개 v2 ---------- */
 .profile-v2 .container {
