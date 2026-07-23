@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // 화면 중앙을 지나는 동안 천천히 진행되도록
       // 시작은 문단이 살짝 올라온 뒤(딜레이), 끝은 화면 위쪽까지 —
       // 구간을 넓게 잡아 스크롤 대비 천천히 읽히게 (모바일에서도 여유롭게)
-      start: "top 68%",
-      end: "bottom 12%",
+      start: "top 88%",
+      end: "bottom 10%",
       scrub: 1,
       invalidateOnRefresh: true,
     },

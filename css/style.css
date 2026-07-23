@@ -716,10 +716,6 @@ h1, h2, h3 {
   animation: case-marquee 45s linear infinite;
 }
 
-.case-scroll:hover .case-track {
-  animation-play-state: paused;
-}
-
 @keyframes case-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -985,6 +981,115 @@ h1, h2, h3 {
 .stat-card-v2:nth-child(3) { background: #f3eefb; }
 .stat-card-v2:nth-child(4) { background: #f1f2f4; }
 
+/* ---------- 서브페이지 공통: 페이지 히어로 ---------- */
+.page-hero {
+  text-align: center;
+}
+
+.page-hero .eyebrow { display: block; }
+
+.page-hero .section-title {
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* ---------- 서브페이지 공통: 주제·설명 리스트 ---------- */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 48px;
+  margin-top: 48px;
+}
+
+.topic-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topic-item h4 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  color: var(--color-accent);
+}
+
+.topic-item p {
+  color: var(--color-text-soft);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ---------- 서브페이지 공통: 프로세스 흐름 ---------- */
+.process-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.process-step {
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.process-arrow {
+  color: var(--color-text-soft);
+  font-size: 1.2rem;
+}
+
+/* ---------- 서브페이지 공통: 2분할 서비스 카드 ---------- */
+.service-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.service-split-card {
+  background: var(--color-bg-soft);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.service-split-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.service-split-card p {
+  color: var(--color-text-soft);
+  line-height: 1.9;
+  font-size: 0.92rem;
+  white-space: pre-line;
+}
+
+/* ---------- 서브페이지 공통: FAQ ---------- */
+.faq-list {
+  margin-top: 48px;
+}
+
+.faq-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item .faq-q {
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.faq-item .faq-a {
+  color: var(--color-text-soft);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
 /* ---------- 반응형 ---------- */
 @media (max-width: 860px) {
   .main-nav { display: none; }
@@ -999,6 +1104,10 @@ h1, h2, h3 {
   .stats-v2-grid { grid-template-columns: repeat(2, 1fr); }
   .illustration-break { aspect-ratio: 1 / 1; }
   .case-card { width: 240px; min-height: 270px; }
+  .topic-grid { grid-template-columns: 1fr; gap: 0; }
+  .service-split { grid-template-columns: 1fr; }
+  .process-flow { gap: 8px; }
+  .process-step { font-size: 0.85rem; padding: 12px 18px; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
