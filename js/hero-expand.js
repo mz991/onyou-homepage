@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var scrim = media.querySelector(".hero-scrim");
   var title = body.querySelector(".hero-title");
 
+  // 제목 영역의 "원래(변형 전)" 하단 위치를 한 번만 측정해 고정값으로 사용
+  // (getBoundingClientRect를 함수 안에서 매번 읽으면 이미 이동한 위치를 기준으로 다시 계산되어 값이 계속 커지는 문제가 생김)
+  var bodyNaturalBottom = body.getBoundingClientRect().bottom;
+
   // 컨테이너 왼쪽 여백(뷰포트 기준) — 핀 래핑 영향 안 받게 직접 계산
   function gutter() {
     var containerW = Math.min(1120, window.innerWidth);
@@ -55,8 +59,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (scrim) tl.to(scrim, { opacity: 0.55, ease: "none" }, 0);
 
-  // 제목·버튼: 영상이 채워지는 동안 서서히 아래로 200px 내려옴
-  tl.to(body, { y: 200, ease: "none" }, 0);
+  // 제목·버튼: 영상이 채워지는 동안 서서히 내려와, 화면 하단에서 일정 "비율"만큼 남은 지점에서 멈춤
+  // (고정 px이면 모바일처럼 화면이 짧을 때 여백이 과하게 커지므로, 화면 높이에 비례하게 계산)
+  var BOTTOM_GAP_RATIO = 200 / 800; // 데스크톱 기준(뷰포트 높이 800px일 때 200px) 비율
+  function descend() {
+    var bottomGap = window.innerHeight * BOTTOM_GAP_RATIO;
+    return (window.innerHeight - bottomGap) - bodyNaturalBottom;
+  }
+  tl.to(body, { y: descend, ease: "none" }, 0);
 
   // 제목: 영상이 뒤를 덮는 후반부에 검정 → 흰색
   if (title) tl.to(title, { color: "#ffffff", ease: "none" }, 0.4);

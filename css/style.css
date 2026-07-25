@@ -617,6 +617,13 @@ h1, h2, h3 {
 
 .footer-info p { margin-bottom: 6px; }
 
+.footer-note {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--color-text-soft);
+  opacity: 0.7;
+}
+
 /* ---------- 플로팅 상담 버튼 ---------- */
 .floating-cta {
   position: fixed;
@@ -684,7 +691,7 @@ h1, h2, h3 {
 
 /* ---------- 인트로 텍스트 ---------- */
 .intro {
-  padding: 200px 0 40px;  /* 위: 영상과 간격 넓게, 아래: 카드와는 가깝게 */
+  padding: clamp(90px, 11vw, 200px) 0 40px;  /* 위: 영상과 간격 넓게(화면폭에 비례), 아래: 카드와는 가깝게 */
   /* 핀 고정된 히어로 영상 위로 자연스럽게 덮으며 올라오도록 */
   position: relative;
   z-index: 3;
@@ -981,17 +988,105 @@ h1, h2, h3 {
 .stat-card-v2:nth-child(3) { background: #f3eefb; }
 .stat-card-v2:nth-child(4) { background: #f1f2f4; }
 
+/* ---------- 서브페이지 공통: 자문제안서 다운로드 배너 ---------- */
+.proposal-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  background: var(--color-bg-soft);
+  border-radius: 24px;
+  padding: 48px;
+}
+
+.proposal-banner-text .section-title {
+  margin-bottom: 12px;
+}
+
+.proposal-banner-text .section-lead {
+  margin: 0;
+}
+
+.proposal-banner .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 /* ---------- 서브페이지 공통: 페이지 히어로 ---------- */
 .page-hero {
-  text-align: center;
+  padding-top: clamp(40px, 5vw, 72px);
+  padding-bottom: 24px;
+}
+
+.page-hero + section {
+  padding-top: 24px;
 }
 
 .page-hero .eyebrow { display: block; }
 
 .page-hero .section-title {
-  margin: 0 auto;
+  font-size: clamp(1.9rem, 3.9vw, 3.2rem);
+  font-weight: 500;
   max-width: 720px;
 }
+
+/* ---------- 서브페이지 공통: 아이콘+설명+사진 블록 (당근 서비스 페이지 참고 구조) ---------- */
+.feature-block-list {
+  margin-top: 16px;
+}
+
+.feature-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.feature-block:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.feature-block-text .eyebrow-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.feature-block-text .eyebrow-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.feature-block-text h3 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.feature-block-text p {
+  color: var(--color-text-soft);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.feature-block-media {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.feature-block:nth-child(4n+1) .eyebrow-icon { background: #dde6f1; }
+.feature-block:nth-child(4n+2) .eyebrow-icon { background: #e4e4ec; }
+.feature-block:nth-child(4n+3) .eyebrow-icon { background: #f7ecc2; }
+.feature-block:nth-child(4n+4) .eyebrow-icon { background: #e3ecd8; }
 
 /* ---------- 서브페이지 공통: 주제·설명 리스트 ---------- */
 .topic-grid {
@@ -1108,6 +1203,9 @@ h1, h2, h3 {
   .service-split { grid-template-columns: 1fr; }
   .process-flow { gap: 8px; }
   .process-step { font-size: 0.85rem; padding: 12px 18px; }
+  .feature-block { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+  .proposal-banner { flex-direction: column; align-items: flex-start; padding: 32px; }
+  .proposal-banner .btn { width: 100%; text-align: center; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
@@ -1121,4 +1219,68 @@ h1, h2, h3 {
 
   /* 모바일: 영상 세로 비중 키움 */
   .hero-media { aspect-ratio: 4 / 5; margin-top: 32px; }
+}
+
+/* ---------- 이용약관 팝업 ---------- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+}
+
+.modal-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+
+.modal-box h3 {
+  font-size: 1rem;
+  margin: 24px 0 8px;
+}
+
+.modal-box h3:first-of-type {
+  margin-top: 0;
+}
+
+.modal-box p {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text-soft);
+  padding: 4px;
+}
+
+@media (max-width: 520px) {
+  .modal-box { padding: 28px; max-height: 85vh; }
 }
