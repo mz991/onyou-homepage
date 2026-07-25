@@ -1030,6 +1030,16 @@ h1, h2, h3 {
   max-width: 720px;
 }
 
+.page-hero .section-title .break-mobile {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .page-hero .section-title .break-mobile {
+    display: revert;
+  }
+}
+
 /* ---------- 서브페이지 공통: 아이콘+설명+사진 블록 (당근 서비스 페이지 참고 구조) ---------- */
 .feature-block-list {
   margin-top: 16px;

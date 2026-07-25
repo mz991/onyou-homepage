@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 제목 영역의 "원래(변형 전)" 하단 위치를 한 번만 측정해 고정값으로 사용
   // (getBoundingClientRect를 함수 안에서 매번 읽으면 이미 이동한 위치를 기준으로 다시 계산되어 값이 계속 커지는 문제가 생김)
-  var bodyNaturalBottom = body.getBoundingClientRect().bottom;
+  // 스크롤 전(언핀 상태)에는 히어로가 상단 고정 헤더 높이만큼 아래에서 시작하지만,
+  // 핀이 걸리면 히어로 자체가 top:0으로 재배치되어 그 오프셋이 사라짐 — 여기서 미리 빼서 보정
+  var heroTopOffset = hero.getBoundingClientRect().top;
+  var bodyNaturalBottom = body.getBoundingClientRect().bottom - heroTopOffset;
 
   // 컨테이너 왼쪽 여백(뷰포트 기준) — 핀 래핑 영향 안 받게 직접 계산
   function gutter() {
@@ -62,8 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // 제목·버튼: 영상이 채워지는 동안 서서히 내려와, 화면 하단에서 일정 "비율"만큼 남은 지점에서 멈춤
   // (고정 px이면 모바일처럼 화면이 짧을 때 여백이 과하게 커지므로, 화면 높이에 비례하게 계산)
   var BOTTOM_GAP_RATIO = 200 / 800; // 데스크톱 기준(뷰포트 높이 800px일 때 200px) 비율
+  var BOTTOM_GAP_RATIO_MOBILE = 110 / 800; // 모바일은 여백이 상대적으로 넓어 보여 더 작은 비율 사용
   function descend() {
-    var bottomGap = window.innerHeight * BOTTOM_GAP_RATIO;
+    var ratio = window.innerWidth <= 860 ? BOTTOM_GAP_RATIO_MOBILE : BOTTOM_GAP_RATIO;
+    var bottomGap = window.innerHeight * ratio;
     return (window.innerHeight - bottomGap) - bodyNaturalBottom;
   }
   tl.to(body, { y: descend, ease: "none" }, 0);
