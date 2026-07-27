@@ -6,7 +6,7 @@
 <title>급여아웃소싱 | 온유 인사노무컨설팅</title>
 <meta name="description" content="급여계산부터 4대보험 신고, 퇴직금 정산까지 — 온유 인사노무컨설팅의 급여아웃소싱 서비스를 소개합니다.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="css/style.css?v=51">
+<link rel="stylesheet" href="css/style.css?v=54">
 </head>
 <body>
 
@@ -144,6 +144,10 @@
             <input type="hidden" name="from_name" value="온유 홈페이지">
             <input type="text" name="name" placeholder="성함" required>
             <input type="tel" name="phone" placeholder="연락처 (010-0000-0000)" required pattern="[0-9\-]{9,13}">
+            <div class="cta-form-radio-group">
+              <label class="cta-form-radio"><input type="radio" name="inquiry_type" value="기업 상담" required> 기업 상담</label>
+              <label class="cta-form-radio"><input type="radio" name="inquiry_type" value="근로자 상담"> 근로자 상담</label>
+            </div>
             <button type="submit" class="btn btn-primary">급여 아웃소싱 상담하기</button>
           </form>
           <p id="cta-form-msg" class="cta-form-msg" role="status" aria-live="polite"></p>

@@ -578,6 +578,28 @@ h1, h2, h3 {
   color: var(--color-accent);
 }
 
+.cta-form-radio-group {
+  display: flex;
+  gap: 20px;
+  padding: 4px 4px;
+}
+
+.cta-form-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.cta-form-radio input {
+  accent-color: var(--color-accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
 .cta-form-msg {
   margin-top: 12px;
   font-size: 0.9rem;
@@ -1218,6 +1240,7 @@ h1, h2, h3 {
   .proposal-banner .btn { width: 100%; text-align: center; }
   .cta-section .eyebrow,
   .cta-action-label { display: none; }
+  .cta-form-radio-group { margin-bottom: 6px; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */
