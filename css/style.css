@@ -1241,6 +1241,7 @@ h1, h2, h3 {
   .cta-section .eyebrow,
   .cta-action-label { display: none; }
   .cta-form-radio-group { margin-bottom: 6px; }
+  .break-desktop { display: none; }
 }
 
 /* 좁은 모바일: 임팩트 카드 2열은 너무 빡빡해서 1열로, 크기도 축소 */

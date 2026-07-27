@@ -2,11 +2,17 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<script>
+  // 새로고침 시 브라우저가 이전 스크롤 위치를 복원하면 스크롤 애니메이션(GSAP)의
+  // 초기 계산이 꼬여서 콘텐츠가 이상하게 보이는 문제가 생김 — 방지
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>노동사건 | 온유 인사노무컨설팅</title>
 <meta name="description" content="임금체불, 부당해고, 산업재해, 직장 내 괴롭힘까지 — 온유 인사노무컨설팅의 노동사건 대응 서비스를 소개합니다.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="css/style.css?v=54">
+<link rel="stylesheet" href="css/style.css?v=55">
 </head>
 <body>
 

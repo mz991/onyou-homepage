@@ -2,11 +2,17 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<script>
+  // 새로고침 시 브라우저가 이전 스크롤 위치를 복원하면 스크롤 애니메이션(GSAP)의
+  // 초기 계산이 꼬여서 히어로 영상이 처음부터 확장된 채로 보이는 문제가 생김 — 방지
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>온유 인사노무컨설팅 | 기업 인사노무 자문 · 급여아웃소싱</title>
 <meta name="description" content="온유 인사노무컨설팅은 기업 인사노무 리스크를 사전에 점검하고, 급여아웃소싱과 노동사건 대응까지 전담 노무사가 함께합니다.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="css/style.css?v=54">
+<link rel="stylesheet" href="css/style.css?v=55">
 </head>
 <body>
 
@@ -68,7 +74,7 @@
   <!-- 인트로 -->
   <section class="intro">
     <div class="container">
-      <p class="intro-text">기업의 성장과 개인의 권리가 함께 가는 길, 온유가 늘 고민하며 걸어온 과정입니다. 인사·노무 리스크를 사전에 점검해 갈등을 예방하고, 문제 발생 시 실질적인 해결책을 제시합니다. 법률 검토부터 급여 관리, 사건 대리까지 민감한 사안을 끝까지 책임지겠습니다.</p>
+      <p class="intro-text">기업의 성장과 개인의 권리가 함께 가는 길,<br class="break-desktop"> 온유가 늘 고민하며 걸어온 과정입니다. 인사·노무 리스크를 사전에 점검해 갈등을 예방하고,<br class="break-desktop"> 문제 발생 시 실질적인 해결책을 제시합니다. 법률 검토부터 급여 관리, 사건 대리까지 민감한 사안을 끝까지 책임지겠습니다.</p>
     </div>
   </section>
 
